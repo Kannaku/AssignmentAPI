@@ -3,6 +3,7 @@ package restassured;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import com.jayway.restassured.path.json.JsonPath;
@@ -16,8 +17,8 @@ public class HelperTestMethods {
 	}
 
 // Get Ids (For use case-1)
-	public ArrayList getListOfIds(JsonPath jp) {
-		ArrayList listOfIds = jp.get("data.id");
+	public ArrayList getListOfIds(JsonPath jp,String value) {
+		ArrayList listOfIds = jp.get("data."+value);
 		return listOfIds;
 	}
 
@@ -28,5 +29,11 @@ public class HelperTestMethods {
 		
 		return mapObject;
 	}
+	
+	// Get Ids (For use case-1)
+		public List<Map<String,String>> getListOfIds(JsonPath jp) {
+			List<Map<String,String>> listOfMapDataa= jp.getList("data");
+			return listOfMapDataa;
+		}
 
 }
